@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Complete from "./pages/Complete";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Layout>
+      <RouterProvider router={router} />
+    </Layout>
   </React.StrictMode>
 );
 
