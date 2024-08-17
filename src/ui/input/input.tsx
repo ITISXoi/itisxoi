@@ -1,13 +1,12 @@
 /* eslint-disable no-nested-ternary */
+import { Label } from "@radix-ui/react-dropdown-menu";
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 import * as React from "react";
-import { Label } from "@radix-ui/react-dropdown-menu";
-import Subtitle1 from "../text/SubTitle1";
-import { FCC } from "../../utils/types";
 import { cn } from "../../utils/helper";
+import { FCC } from "../../utils/types";
 import { Show } from "../show";
-import Icons from "../../assets/icons/icons";
+import Subtitle1 from "../text/SubTitle1";
 
 export const inputVariants = cva(
   cn(
@@ -130,7 +129,7 @@ const Input: FCC<InputProps> = ({
             onClick={() => setState((prev) => ({ ...prev, show: !prev.show }))}
             className="absolute right-[10px] top-1/2 z-10 -translate-y-1/2 cursor-pointer"
           >
-            {show ? <Icons.eye /> : <Icons.eyeHidden />}
+            {show ? <></> : <></>}
           </div>
         </Show>
       </div>

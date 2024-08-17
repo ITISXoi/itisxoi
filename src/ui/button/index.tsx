@@ -1,7 +1,5 @@
-import Icons from "../../assets/icons/icons";
-import { Show } from "../show";
 import { cn } from "../../utils/helper";
-// import { Slot } from "@radix-ui/react-slot";
+import { Show } from "../show";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
@@ -35,7 +33,7 @@ const buttonVariants = cva(
         st: "h-12 px-3 text-sm",
         mixin: "p-0",
         icon: "h-6 w-h-6 rounded-full active:scale-100",
-        xl: "px-10 py-4"
+        xl: "px-10 py-4",
       },
     },
     defaultVariants: {
@@ -54,7 +52,8 @@ const LoadingIcon = ({
   size?: string;
 }) => {
   return (
-    <Icons.spinner size={size} className={cn("animate-spin ", className)} />
+    // <Icons.spinner size={size} className={cn("animate-spin ", className)} />
+    <></>
   );
 };
 export interface ButtonProps
