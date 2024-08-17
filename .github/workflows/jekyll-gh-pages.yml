@@ -28,4 +28,11 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # Path to your React app build folder.
+          publish_dir: ./build
+          publish_branch: gh-pages  # The branch to which the built site will be pushed.
+          allow_empty_commit: false  # Avoid creating empty commits if there are no changes.
+          keep_files: false  # Set to true if you want to retain existing files in gh-pages branch.
+          force_orphan: true  # Forces the gh-pages branch to be orphaned (no parent history), useful for clean deployments.
+          enable_jekyll: false  # Disable Jekyll, as it's not needed for React apps.
+          disable_nojekyll: true  # Set this to true to prevent GitHub from processing your site as a Jekyll project.
+          exclude_assets: '.github'
