@@ -35,6 +35,7 @@ const buttonVariants = cva(
         st: "h-12 px-3 text-sm",
         mixin: "p-0",
         icon: "h-6 w-h-6 rounded-full active:scale-100",
+        xl: "px-10 py-4"
       },
     },
     defaultVariants: {

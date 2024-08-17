@@ -52,6 +52,7 @@ module.exports = {
         "banner-course": "url('/images/banner_course.png')",
         "footer": "url('../src/assets/svg/bg_footer.svg')",
         "cart": "url('../src/assets/images/bg_cart.png')",
+        "heading": "url('../src/assets/images/bg-heading.png')",
       },
       colors: {
         border: {

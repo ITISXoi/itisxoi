@@ -4,9 +4,11 @@ import ListVideo from "./ListVideo";
 import ListBook from "./ListBook";
 import { Button } from "../../ui/button";
 import Input from "../../ui/input/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Heading } from "./styled";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [videos, setVideos] = useState(listVideo.product || []);
   const [books, setBooks] = useState(listBook.product || []);
 
@@ -17,9 +19,17 @@ const Cart = () => {
   const handleClearBook = (key: number) => {
     setBooks((prevBooks) => prevBooks.filter((item) => item.key !== key));
   };
+
+  const handleClick = () => {
+    navigate("/checkout");
+  };
+
   return (
-    <div className="bg-cart bg-auto w-full min-h-80 px-10 py-32">
-      <div className="bg-white w-full rounded-sm shadow-xl container">
+    <div className="bg-cart bg-auto w-full min-h-80 px-10 pt-32 pb-[400px]">
+      <div className="bg-white w-full rounded-sm shadow-xl container relative">
+        <Heading className="bg-secondary-1000 px-20 w-fit rounded-3xl text-white font-bold text-[40px] outline-none absolute z-10 -top-6">
+          Shopping Cart
+        </Heading>
         <div className="pt-20 px-20 pb-10">
           <div className="flex flex-row justify-between mb-4">
             <p className="font-bold text-3xl">Items</p>
@@ -38,7 +48,7 @@ const Cart = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-4 px-4 pb-20">
+        <div className="flex flex-col gap-4 px-4 pb-10">
           <div className="bg-light flex justify-end py-2 px-28 gap-20">
             <div className="flex flex-row justify-between items-center w-72">
               <p className="text-xl">Subtotal</p>
@@ -64,6 +74,15 @@ const Cart = () => {
               <p className="font-bold text-2xl">$400</p>
             </div>
           </div>
+        </div>
+        <div className="flex justify-end items-center pb-10 pr-10">
+          <Button
+            className="w-[200px] text-lg"
+            variant={"blue"}
+            onClick={handleClick}
+          >
+            Check out
+          </Button>
         </div>
       </div>
     </div>
