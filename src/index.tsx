@@ -7,6 +7,8 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Complete from "./pages/Complete";
 import Layout from "./components/Layout";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +28,14 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
+    </Provider>
   </React.StrictMode>
 );
 

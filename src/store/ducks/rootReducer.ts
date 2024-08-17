@@ -1,9 +1,9 @@
-import investorReducer from "../ducks/price/slice";
+import productReducer from "./product/slice";
 import { combineReducers } from "@reduxjs/toolkit";
 
 const createRootReducer = () => {
   return combineReducers({
-    investor: investorReducer,
+    product: productReducer,
   });
 };
 

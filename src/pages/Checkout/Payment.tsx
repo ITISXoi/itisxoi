@@ -1,6 +1,7 @@
 import { Control, UseFormRegister } from "react-hook-form";
 import FormWithTitle from "../../ui/input/FormWithLabel";
 import { CheckoutSchemaT } from "./validate";
+import moment from "moment";
 
 interface Props {
   control: Control<CheckoutSchemaT, any>;
@@ -36,6 +37,7 @@ const Payment = (props: Props) => {
         <div className="w-[50%]">
           <FormWithTitle
             type="date"
+            min={moment(new Date(Date.now() + 86400000)).format("YYYY-MM-DD")}
             {...register("expireDate")}
             control={control}
             title="Expire Date"

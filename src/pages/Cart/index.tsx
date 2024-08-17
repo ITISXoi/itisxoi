@@ -1,16 +1,26 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getListProduct,
+  setListProduct,
+  setPromotionCode,
+} from "../../store/ducks/product/slice";
 import { listBook, listVideo } from "../../utils/contants";
-import ListVideo from "./ListVideo";
+import { BookT, VideoT } from "../../utils/types";
 import ListBook from "./ListBook";
-import { Button } from "../../ui/button";
-import Input from "../../ui/input/input";
-import { Link, useNavigate } from "react-router-dom";
+import ListVideo from "./ListVideo";
+import PreviewPrice from "./PreviewPrice";
 import { Heading } from "./styled";
 
 const Cart = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const getProduct = useSelector(getListProduct);
   const [videos, setVideos] = useState(listVideo.product || []);
   const [books, setBooks] = useState(listBook.product || []);
+  const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState<string | number>("0");
+  const [promotionCode, setCode] = useState("");
 
   const handleClearVideo = (key: number) => {
     setVideos((prevVideos) => prevVideos.filter((item) => item.key !== key));
@@ -20,9 +30,40 @@ const Cart = () => {
     setBooks((prevBooks) => prevBooks.filter((item) => item.key !== key));
   };
 
-  const handleClick = () => {
-    navigate("/checkout");
+  const handleChangeCode = (code: string) => {
+    setCode(code);
   };
+
+  const handleApplyCode = () => {
+    if (promotionCode === "EVO") {
+      setDiscount((price * 0.06).toFixed(2));
+      dispatch(setPromotionCode(promotionCode));
+    }
+  };
+
+  useEffect(() => {
+    const listProduct = [
+      ...videos.map((item: VideoT) => ({
+        key: item.key,
+        name: item.name,
+        price: item.price,
+      })),
+      ...books.map((item: BookT) => ({
+        key: item.key,
+        name: item.name,
+        price: item.price,
+      })),
+    ];
+    dispatch(setListProduct(listProduct));
+  }, [videos, books]);
+
+  useEffect(() => {
+    const totalPrice = getProduct.reduce(
+      (sum, product) => sum + product.price,
+      0
+    );
+    setPrice(totalPrice);
+  }, [getProduct]);
 
   return (
     <div className="bg-cart bg-auto w-full min-h-80 px-10 pt-32 pb-[400px]">
@@ -48,42 +89,12 @@ const Cart = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-4 px-4 pb-10">
-          <div className="bg-light flex justify-end py-2 px-28 gap-20">
-            <div className="flex flex-row justify-between items-center w-72">
-              <p className="text-xl">Subtotal</p>
-              <p className="font-bold text-2xl">$400</p>
-            </div>
-          </div>
-          <div className="flex flex-row justify-between py-2 px-28 gap-20">
-            <div className="flex flex-row items-center gap-4">
-              <p className="text-xl">Apply Promotion Code</p>
-              <Input placeholder="Promotion Code" className="w-[300px]" />
-              <Link to={"/checkout"}>
-                <Button variant={"blue"}>Apply Code</Button>
-              </Link>
-            </div>
-            <div className="flex flex-row justify-between items-center w-72">
-              <p className="text-xl">Discount</p>
-              <p className="font-bold text-2xl">-$40</p>
-            </div>
-          </div>
-          <div className="bg-light flex justify-end py-2 px-28 gap-20">
-            <div className="flex flex-row justify-between items-center w-72">
-              <p className="text-xl">GRAND TOTAL</p>
-              <p className="font-bold text-2xl">$400</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-end items-center pb-10 pr-10">
-          <Button
-            className="w-[200px] text-lg"
-            variant={"blue"}
-            onClick={handleClick}
-          >
-            Check out
-          </Button>
-        </div>
+        <PreviewPrice
+          price={price}
+          handleChangeCode={handleChangeCode}
+          handleApplyCode={handleApplyCode}
+          discount={discount}
+        />
       </div>
     </div>
   );

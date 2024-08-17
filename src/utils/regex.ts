@@ -19,5 +19,7 @@ export const REGEX_PHONE_NUMBER = /^(?:[0-9] ?){6,14}[0-9]$/;
 export const REGEX_ALPHANUMERIC =
   /^([a-zA-Z0-9^áàảãạắằẳẵặấầẩẫậéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵđÁÀẢÃẠẮẰẲẴẶẤẦẨẪẬÉÈẺẼẸẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌỐỒỔỖỘỚỜỞỠỢÚÙỦŨỤỨỪỬỮỰÝỲỶỸỴĐ,.?! /])*$/u;
 
-export const REGEX_PHONE_NUMBER_CREATE_ACADEMY = /^(?:\+?[0-9] ?){1,}[0-9]$/;
+export const REGEX_PHONE_NUMBER_CREATE_ACADEMY = /^(?:\+?[0-9] ?){6,}[0-9]$/;
+export const CARD_NUMBER = /^(?:\+?[0-9] ?){15,15}[0-9]$/;
+export const SECURE_CODE = /^(?:\+?[0-9] ?){2,3}[0-9]$/;
 export const REGEX_PHONE_NUMBER_NO_REQUIRED = /^(?:\+?[0-9] ?){0,}[0-9]*$/;
