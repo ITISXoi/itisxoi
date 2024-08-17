@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Heading = styled.div`
-  left: 34%;
   &:after {
     content: "";
     position: absolute;

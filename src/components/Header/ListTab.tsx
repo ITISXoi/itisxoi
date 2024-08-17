@@ -1,9 +1,13 @@
-import { useState } from "react";
 import { listTab } from "../../utils/contants";
 import Tab from "./Tab";
 
-const ListTab = () => {
-  const [selected, setSelected] = useState("PD Videos");
+interface Props {
+  selected: string;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ListTab = (props: Props) => {
+  const { selected, setSelected } = props;
   return (
     <div className="flex items-center justify-between gap-8">
       {listTab.map((item: { title: string; link: string }) => (

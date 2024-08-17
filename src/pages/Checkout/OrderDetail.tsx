@@ -43,7 +43,7 @@ const OrderDetail = () => {
   }, [code, price]);
 
   return (
-    <div className="flex flex-col lg:pl-10 gap-4 w-[100%] lg:w-[35%] min-w-[400px]">
+    <div className="flex flex-col lg:pl-10 gap-4 w-[100%] lg:w-[35%] lg:min-w-[400px]">
       <div className="flex flex-row items-center justify-between border-b pb-4">
         <p className="font-bold text-[30px]">Order Details</p>
         <p className="font-medium text-xl">{listProduct.length} items</p>

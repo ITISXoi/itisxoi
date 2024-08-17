@@ -6,7 +6,7 @@ interface Props {
   setSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Tab = (props: Props) => {
+const TabMobile = (props: Props) => {
   const { title, choosing, setSelected } = props;
   const handleClick = () => {
     setSelected(title);
@@ -14,9 +14,9 @@ const Tab = (props: Props) => {
   return (
     <div
       className={cn(
-        "text-secondary-900 text-lg font-base cursor-pointer py-4 hover:font-bold",
+        "text-secondary-900 text-lg font-base cursor-pointer py-2 hover:font-bold",
         choosing
-          ? "font-bold border-b-4 border-secondary-900 mt-1"
+          ? "font-bold border-r-4 border-secondary-900 mt-1"
           : "hover:text-secondary-1000"
       )}
       onClick={handleClick}
@@ -26,4 +26,4 @@ const Tab = (props: Props) => {
   );
 };
 
-export default Tab;
+export default TabMobile;

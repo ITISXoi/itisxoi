@@ -66,15 +66,15 @@ const Cart = () => {
   }, [getProduct]);
 
   return (
-    <div className="bg-cart bg-auto w-full min-h-80 px-10 pt-32 pb-[400px]">
+    <div className="bg-cart bg-auto w-full min-h-80 px-4 md:px-10 pt-32 pb-[400px]">
       <div className="bg-white w-full rounded-sm shadow-xl container relative">
-        <Heading className="bg-secondary-1000 px-20 w-fit rounded-3xl text-white font-bold text-[40px] outline-none absolute z-10 -top-6">
+        <Heading className="bg-secondary-1000 px-4 md:px-20 w-fit rounded-3xl text-white font-bold text-[30px] sm:text-[40px] outline-none absolute z-1 -top-6 left-[20%] sm:left-[25%] lg:left-[34%]">
           Shopping Cart
         </Heading>
-        <div className="pt-20 px-20 pb-10">
-          <div className="flex flex-row justify-between mb-4">
+        <div className="pt-20 px-4 pb-10 md:px-12 lg:px-20">
+          <div className="flex lg:flex-row justify-between mb-4">
             <p className="font-bold text-3xl">Items</p>
-            <p className="font-bold text-3xl w-28">Price</p>
+            <p className="font-bold text-3xl hidden lg:block lg:w-28">Price</p>
           </div>
           <div className="flex flex-col gap-12">
             <ListVideo
